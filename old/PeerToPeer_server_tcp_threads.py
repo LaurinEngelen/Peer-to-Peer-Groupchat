@@ -70,7 +70,7 @@ def tui():
                     print("No clients connected.")
         elif choice == "3":
             message = input("Enter message to broadcast: ").strip()
-            broadcast(message)
+            broadcast(broadcastMessageCASP(server_ip, "Server", message))
         elif choice == "4":
             print("Shutting down server...")
             StopFlag = True
