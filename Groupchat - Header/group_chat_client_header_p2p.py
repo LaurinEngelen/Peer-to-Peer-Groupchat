@@ -40,7 +40,7 @@ class GroupChatClient:
         self.running = False
         self.my_ip = ""
         
-    def start(self, server_host='localhost', server_port=8888):
+    def start(self, server_host='127.0.0.1', server_port=50000):
         try:
             # Nickname eingeben
             self.nickname = input("Nickname eingeben: ").strip()
@@ -698,13 +698,13 @@ def main():
     client = GroupChatClient()
     
     # Server-Adresse abfragen
-    server_host = input("Server-Host (Enter für localhost): ").strip()
+    server_host = input("Server-Host (Enter für 127.0.0.1): ").strip()
     if not server_host:
-        server_host = 'localhost'
+        server_host = '127.0.0.1'
     
-    server_port = input("Server-Port (Enter für 8888): ").strip()
+    server_port = input("Server-Port (Enter für 50000): ").strip()
     if not server_port:
-        server_port = 8888
+        server_port = 50000
     else:
         server_port = int(server_port)
     

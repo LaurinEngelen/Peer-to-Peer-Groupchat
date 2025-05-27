@@ -7,7 +7,7 @@ from typing import Dict, List, Set
 class GroupChatServer:
     PROTOCOL_VERSION = "1.0"
     
-    def __init__(self, host='localhost', port=8888):
+    def __init__(self, host='100.110.192.122', port=50000):
         self.host = host
         self.port = port
         self.clients = {}  # {client_socket: client_info}
@@ -300,13 +300,26 @@ class GroupChatServer:
             self.server_socket.close()
         print("Server beendet")
 
+
 def main():
-    server = GroupChatServer()
+    # Server-IP und Port abfragen
+    server_host = input("Server-Host (Enter für 127.0.0.1): ").strip()
+    if not server_host:
+        server_host = '127.0.0.1'
+
+    server_port = input("Server-Port (Enter für 50000): ").strip()
+    if not server_port:
+        server_port = 50000
+    else:
+        server_port = int(server_port)
+
+    server = GroupChatServer(host=server_host, port=server_port)
     try:
         server.start()
     except KeyboardInterrupt:
         print("\nServer wird beendet...")
         server.stop()
+
 
 if __name__ == "__main__":
     main()
